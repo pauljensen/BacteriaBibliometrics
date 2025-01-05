@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+export EDIRECT_LOCAL_MASTER=/Users/pjens/pubmed
+
+while read p <&3; do
+    year=$(echo $p | fetch-pubmed | xtract -pattern PubmedArticle -element PubDate/Year)
+    echo "$p,$year"
+done 3< unique_pmids.txt
+

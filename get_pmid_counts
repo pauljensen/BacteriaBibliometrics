@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+while IFS=, read -r id species abbrev fname fabb <&3; do {
+    resfull=$(wc -l < "pmids/$fname" | xargs)
+    resabb=$(wc -l < "pmids/$fabb" | xargs)
+    echo "$id,$species,$abbrev,$fname,$fabb,$resfull,$resabb"
+} done 3< species.csv

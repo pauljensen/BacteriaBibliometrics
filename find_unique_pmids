@@ -1,0 +1,10 @@
+#!/bin/sh
+
+touch $1
+
+for filename in `ls -1Sr pmids/`; do
+    cat $1 pmids/$filename | uniq > temp
+    mv temp $1
+    echo $filename
+done
+
